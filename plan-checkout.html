@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="./favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout | Fever</title>
+  <title>Checkout | F1 Map</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -157,7 +157,7 @@
       <!-- Desktop checkout navbar -->
       <nav class="checkout-desktop-nav">
         <a class="checkout-nav-logo" href="index.html">
-          <img src="img/fever-logo.svg" alt="Fever" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'font-size:20px;font-weight:800;letter-spacing:-0.5px;color:#031419;\'>fever</span>'">
+          <img src="img/fever-logo.svg" alt="F1 Map" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'font-size:20px;font-weight:800;letter-spacing:-0.5px;color:#031419;\'>F1 Map</span>'">
         </a>
         <div class="checkout-desktop-secure">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -320,7 +320,7 @@
     if (!data) { window.location.replace('index.html'); return; }
 
     var slug = new URLSearchParams(window.location.search).get('plan') || data.slug;
-    document.title = 'Checkout \u2013 ' + data.title + ' | Fever';
+    document.title = 'Checkout \u2013 ' + data.title + ' | F1 Map';
     document.getElementById('event-thumb').src = data.hero;
     document.getElementById('event-name').textContent = data.title;
     document.getElementById('event-venue-name').textContent = data.venue;

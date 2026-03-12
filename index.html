@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fever - Madrid</title>
+  <title>F1 Map - Madrid</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -803,6 +803,236 @@
       padding: 0;
     }
 
+    /* ========== F1 App Wireframe (Fever style) ========== */
+    .f1-day-tabs {
+      display: flex;
+      padding: 0 16px;
+      gap: 0;
+      border-bottom: 1px solid var(--color-border);
+      background: #fff;
+    }
+    .f1-day-tabs .tab {
+      flex: 1;
+      padding: 12px 8px;
+      border: none;
+      background: none;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-subtle);
+      cursor: pointer;
+      position: relative;
+    }
+    .f1-day-tabs .tab.active { font-weight: 600; color: var(--color-text-main); }
+    .f1-day-tabs .tab.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: var(--color-primary);
+    }
+    .f1-live-block {
+      padding: 16px;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .f1-session-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .f1-session-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 64px;
+      background: var(--color-primary-weak);
+      color: var(--color-primary);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .f1-session-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-success); }
+    .f1-timer {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+    .f1-safety-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      background: #fff8e6;
+      border: 1px solid #e6d9a8;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .f1-safety-banner svg { width: 24px; height: 24px; flex-shrink: 0; color: var(--color-text-warning, #9f5800); }
+    .f1-safety-banner strong { font-size: 12px; color: var(--color-text-main); }
+    .f1-safety-banner span { font-size: 12px; color: var(--color-text-subtle); display: block; margin-top: 2px; }
+    .f1-weather-map {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .f1-weather {
+      flex: 0 0 140px;
+      padding: 8px 0;
+    }
+    .f1-weather .temp { font-size: 24px; font-weight: 600; color: var(--color-text-main); }
+    .f1-weather .meta { font-size: 12px; color: var(--color-text-subtle); margin-top: 4px; }
+    .f1-map-thumb {
+      flex: 1;
+      min-height: 80px;
+      background: var(--color-bg-neutral);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-subtle);
+      font-size: 12px;
+    }
+    .f1-map-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px; color: var(--color-text-subtle);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 12px;
+    }
+    .f1-sponsor-placeholder {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--color-bg-neutral);
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .f1-sponsor-placeholder .icon { width: 32px; height: 32px; background: var(--color-border); border-radius: 4px; }
+    .f1-sponsor-placeholder .title { font-size: 14px; font-weight: 600; color: var(--color-text-subtle); }
+    .f1-standings table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .f1-standings th { text-align: left; padding: 6px 8px 6px 0; font-weight: 600; color: var(--color-text-subtle); }
+    .f1-standings th:nth-child(1) { width: 36px; }
+    .f1-standings th:nth-child(3) { width: 56px; }
+    .f1-standings th:nth-child(4) { text-align: right; }
+    .f1-standings td { padding: 8px 8px 8px 0; vertical-align: middle; border-top: 1px solid var(--color-border); }
+    .f1-standings td:nth-child(4) { text-align: right; font-variant-numeric: tabular-nums; }
+    .f1-driver { display: flex; align-items: center; gap: 8px; }
+    .f1-driver .flag { font-size: 16px; }
+    .f1-driver .name { font-weight: 600; color: var(--color-text-main); }
+    .f1-driver .team { font-size: 11px; color: var(--color-text-subtle); }
+    .f1-view-full { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 0; }
+    .f1-view-full a { font-size: 14px; font-weight: 600; color: var(--color-primary); text-decoration: none; }
+    .f1-quick-actions { padding: 0 16px 24px; }
+    .f1-quick-actions h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--color-text-main); }
+    .f1-quick-actions-grid { display: flex; gap: 12px; }
+    .f1-quick-card {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 8px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--color-text-main);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .f1-quick-card:hover { border-color: var(--color-primary); }
+    .f1-quick-card svg { width: 32px; height: 32px; color: var(--color-primary); margin-bottom: 8px; }
+    .f1-quick-card span { font-size: 13px; font-weight: 600; text-align: center; line-height: 1.3; }
+    .f1-parallel { padding: 0 16px 24px; }
+    .f1-parallel h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--color-text-main); }
+    .f1-chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .f1-chips::-webkit-scrollbar { display: none; }
+    .f1-chip {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 64px;
+      border: 1px solid var(--color-border);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-main);
+      cursor: pointer;
+    }
+    .f1-chip.active { border-color: var(--color-primary); background: var(--color-primary-weak); color: var(--color-primary); }
+    .f1-event-list { margin-top: 16px; }
+    .f1-event-item {
+      display: block;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-border);
+      text-decoration: none;
+      color: inherit;
+    }
+    .f1-event-item .category { font-size: 12px; font-weight: 500; color: var(--color-primary); margin-bottom: 4px; }
+    .f1-event-item .title { font-size: 16px; font-weight: 600; color: var(--color-text-main); }
+    .f1-event-item .desc { font-size: 13px; color: var(--color-text-subtle); margin-top: 4px; }
+    .f1-event-item .location { font-size: 12px; color: var(--color-text-subtle); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+    .f1-sponsor-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--color-bg-neutral);
+      border-top: 1px solid var(--color-border);
+    }
+    .f1-sponsor-banner .left { display: flex; align-items: center; gap: 12px; }
+    .f1-sponsor-banner .icon { width: 32px; height: 32px; background: var(--color-border); border-radius: 4px; }
+    .f1-sponsor-banner .title { font-size: 14px; font-weight: 600; color: var(--color-text-subtle); }
+    .f1-sponsor-banner .close { width: 24px; height: 24px; border: none; background: none; cursor: pointer; color: var(--color-text-subtle); padding: 0; display: flex; align-items: center; justify-content: center; }
+    .f1-bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 0 12px;
+      padding-bottom: max(12px, env(safe-area-inset-bottom));
+      background: #fff;
+      border-top: 1px solid var(--color-border);
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 393px;
+      max-width: 100vw;
+      z-index: 50;
+    }
+    .phone.has-f1-nav { padding-bottom: 64px; }
+    .f1-bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-text-subtle);
+      text-decoration: none;
+    }
+    .f1-bottom-nav a.active { color: var(--color-primary); }
+    .f1-bottom-nav a svg { width: 24px; height: 24px; }
+
     /* Focus-visible */
     button:focus-visible, a:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
     /* Tap feedback */
@@ -817,11 +1047,11 @@
 <script>if(localStorage.getItem("fever_logged_in")==="true")document.documentElement.classList.add("u-in")</script>
 </head>
 <body>
-  <div class="phone">
+  <div class="phone has-f1-nav">
 
     <!-- Navbar -->
     <nav class="navbar">
-      <a href="index.html" class="logo-link" aria-label="Fever"><img src="img/fever-logo.svg" alt="Fever"></a>
+      <a href="index.html" class="logo-link" aria-label="F1 Map"><img src="img/fever-logo.svg" alt="F1 Map"></a>
       <div class="desktop-nav-center">
         <button class="desk-location js-location-btn"><svg viewBox="0 0 384 512" fill="currentColor" width="16" height="16"><path d="M352 192c0-88.4-71.6-160-160-160S32 103.6 32 192c0 15.6 5.4 37 16.6 63.4c10.9 25.9 26.2 54 43.6 82.1c34.1 55.3 74.4 108.2 99.9 140c25.4-31.8 65.8-84.7 99.9-140c17.3-28.1 32.7-56.3 43.6-82.1C346.6 229 352 207.6 352 192zm32 0c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192zm-240 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm48 80a80 80 0 1 1 0-160 80 80 0 1 1 0 160z"/></svg> Madrid</button>
         <button class="desk-categories" onclick="window.location.href='category.html'"><svg viewBox="0 0 16 16" fill="currentColor" width="16" height="16"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg> Categories</button>
@@ -909,6 +1139,109 @@
           </div>
         </a>
       </div>
+    </div>
+
+    <!-- F1 App wireframe (Fever style) -->
+    <div class="f1-day-tabs">
+      <button type="button" class="tab">Friday</button>
+      <button type="button" class="tab active">Saturday</button>
+      <button type="button" class="tab">Sunday</button>
+    </div>
+    <div class="f1-live-block">
+      <div class="f1-session-row">
+        <span class="f1-session-pill"><span class="dot"></span> Qualifying Day · F2</span>
+        <span class="f1-timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 00:28:43</span>
+      </div>
+      <div class="f1-safety-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14v-5l-7-7-7 7v5z"/><path d="M12 9v4"/></svg>
+        <div>
+          <strong>SAFETY CAR DEPLOYED</strong>
+          <span>Accident at Turn 5 — debris on track</span>
+        </div>
+      </div>
+      <div class="f1-weather-map">
+        <div class="f1-weather">
+          <div class="temp">23°C</div>
+          <div class="meta">14 km/h SW · Rain risk 20%</div>
+        </div>
+        <div class="f1-map-thumb">Track map</div>
+      </div>
+      <div class="f1-map-footer">
+        <span>Pit stops A. Rulcolea 0 | L. Norris 1</span>
+        <span>Lap 15 / 59</span>
+      </div>
+      <div class="f1-sponsor-placeholder">
+        <div class="icon"></div>
+        <span class="title">Sponsor placeholder</span>
+      </div>
+      <div class="f1-standings">
+        <table>
+          <thead><tr><th>Pos.</th><th>Driver</th><th>Gap</th><th>Last lap</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><div class="f1-driver"><span class="flag">🇪🇸</span><div><div class="name">A. Rulcolea</div><div class="team">Aston Martin · #13</div></div></div></td><td>—</td><td>1:24.587</td></tr>
+            <tr><td>2</td><td><div class="f1-driver"><span class="flag">🇬🇧</span><div><div class="name">L. Norris</div><div class="team">McLaren · #4</div></div></div></td><td>+1.273s</td><td>1:25.032</td></tr>
+            <tr><td>3</td><td><div class="f1-driver"><span class="flag">🇪🇸</span><div><div class="name">B. Di Giase</div><div class="team">Ferrari · #3</div></div></div></td><td>+1.926s</td><td>1:25.141</td></tr>
+            <tr><td>4</td><td><div class="f1-driver"><span class="flag">🇳🇱</span><div><div class="name">M. Verstappen</div><div class="team">Red Bull · #1</div></div></div></td><td>+2.421s</td><td>1:25.201</td></tr>
+            <tr><td>5</td><td><div class="f1-driver"><span class="flag">🇦🇺</span><div><div class="name">Oscar Piastri</div><div class="team">McLaren · #81</div></div></div></td><td>+2.987s</td><td>1:25.443</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="f1-view-full"><a href="#">View full data</a></div>
+    </div>
+    <div class="f1-quick-actions">
+      <h3>Quick actions</h3>
+      <div class="f1-quick-actions-grid">
+        <a href="f1-map.html" class="f1-quick-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>🗺️ Mapa</span></a>
+        <a href="plan.html?plan=f1-grand-prix" class="f1-quick-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 3H6a2 2 0 00-2 2v14a2 2 0 002 2h4M14 2v4M10 2v4"/></svg><span>🎟️ Mi entrada</span></a>
+        <a href="category.html" class="f1-quick-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>⏱️ Programa</span></a>
+      </div>
+    </div>
+    <div class="f1-parallel">
+      <h3>Parallel events</h3>
+      <div class="f1-chips">
+        <button type="button" class="f1-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg> Filter</button>
+        <button type="button" class="f1-chip">Track Sessions</button>
+        <button type="button" class="f1-chip active">Fan Experience</button>
+        <button type="button" class="f1-chip">Entertainment</button>
+        <button type="button" class="f1-chip">Ceremonies</button>
+        <button type="button" class="f1-chip">Brand Activations</button>
+      </div>
+      <div class="f1-event-list">
+        <a href="plan.html?plan=f1-grand-prix" class="f1-event-item">
+          <div class="category">Brand Activations</div>
+          <div class="title">10:00 Red Bull Pit Stop Challenge</div>
+          <div class="desc">Timed wheel change challenge.</div>
+          <div class="location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Red Bull Zone</div>
+        </a>
+        <a href="#" class="f1-event-item">
+          <div class="category">Fan Experience</div>
+          <div class="title">12:30 Autograph Session</div>
+          <div class="desc">Signing autographs and taking photos with drivers.</div>
+          <div class="location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Fan Zone Stage</div>
+        </a>
+        <a href="#" class="f1-event-item">
+          <div class="category">Brand Activations</div>
+          <div class="title">10:00 Official Merch Launch</div>
+          <div class="desc">Exclusive merchandise available at the F1 Store.</div>
+          <div class="location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> F1 Store</div>
+        </a>
+        <a href="#" class="f1-event-item">
+          <div class="category">Entertainment</div>
+          <div class="title">18:00 DJ Set — Martin Garrix</div>
+          <div class="desc">Post-qualifying concert for all attendees.</div>
+          <div class="location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Main Stage</div>
+        </a>
+        <a href="#" class="f1-event-item">
+          <div class="category">Entertainment</div>
+          <div class="title">19:00 Podium Celebration Show</div>
+          <div class="desc">Show with lights, confetti and fireworks.</div>
+          <div class="location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Main Circuit</div>
+        </a>
+      </div>
+    </div>
+    <div class="f1-sponsor-banner" id="f1-sponsor-banner">
+      <div class="left"><div class="icon"></div><span class="title">Sponsor placeholder</span></div>
+      <button type="button" class="close" aria-label="Dismiss" id="f1-sponsor-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
 
     <div class="home-sections">
@@ -1390,7 +1723,7 @@
     <div class="footer">
       <div class="footer-cols">
         <div class="footer-col">
-          <h5>About Fever</h5>
+          <h5>About F1 Map</h5>
           <ul>
             <li><a href="press.html">Press</a></li>
             <li><a href="careers.html">Careers</a></li>
@@ -1428,9 +1761,17 @@
       </div>
       <div class="legal">
         <a href="terms.html">Terms of Use</a> | <a href="privacy.html">Privacy Policy</a> | <a href="cookies.html">Cookie Policy</a>
-        <div style="margin-top:8px;text-align:right;">&copy;2026 &ndash; Fever</div>
+        <div style="margin-top:8px;text-align:right;">&copy;2026 &ndash; F1 Map</div>
       </div>
     </div>
+
+    <nav class="f1-bottom-nav" aria-label="F1 App navigation">
+      <a href="index.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>Home</a>
+      <a href="f1-map.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="category.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Programme</a>
+      <a href="search.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 3H6a2 2 0 00-2 2v14a2 2 0 002 2h4"/></svg>Merch &amp; Food</a>
+      <a href="help-center.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>More</a>
+    </nav>
 
     <div class="city-sheet-overlay" id="city-sheet-overlay" aria-hidden="true">
       <div class="city-sheet" role="dialog" aria-modal="true" aria-labelledby="city-sheet-title">
@@ -1563,6 +1904,29 @@
         document.addEventListener('mousemove', function(e) { if (isDragging) dragMove(e.clientY, e); });
         document.addEventListener('mouseup', dragEnd);
       })();
+    })();
+
+    (function() {
+      var sponsorBanner = document.getElementById('f1-sponsor-banner');
+      var sponsorClose = document.getElementById('f1-sponsor-close');
+      if (sponsorClose && sponsorBanner) {
+        sponsorClose.addEventListener('click', function() { sponsorBanner.style.display = 'none'; });
+      }
+      var dayTabs = document.querySelectorAll('.f1-day-tabs .tab');
+      dayTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          dayTabs.forEach(function(t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+        });
+      });
+      var chips = document.querySelectorAll('.f1-parallel .f1-chip');
+      chips.forEach(function(chip) {
+        if (chip.tagName !== 'BUTTON') return;
+        chip.addEventListener('click', function() {
+          chips.forEach(function(c) { c.classList.remove('active'); });
+          chip.classList.add('active');
+        });
+      });
     })();
 
     (function() {
