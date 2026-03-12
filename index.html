@@ -14,8 +14,17 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-    /* Fever Design System — refined to match production feverup.com */
+    /* F1 Miami APP design system (benchmark: Figma board 4-261) — dark theme, teal accent */
     :root {
+      --f1-bg: #0d0d0d;
+      --f1-bg-card: #1a1a1a;
+      --f1-bg-elevated: #242424;
+      --f1-teal: #00C8C7;
+      --f1-teal-dim: rgba(0, 200, 199, 0.15);
+      --f1-text: #ffffff;
+      --f1-text-muted: rgba(255, 255, 255, 0.7);
+      --f1-border: rgba(255, 255, 255, 0.12);
+      --f1-font: 'Montserrat', -apple-system, sans-serif;
       --color-primary: #0079ca;
       --color-primary-weak: #e6f4ff;
       --color-text-main: #031419;
@@ -23,19 +32,12 @@
       --color-border: #ccd2d8;
       --color-bg-neutral: #f2f3f3;
       --radius: 0.75rem;
-      --elevation-01: 0 1px 3px 0 rgba(0,0,0,0.08);
       --font: 'Montserrat', sans-serif;
-  --color-text-disable: #a7b2ba;
-  --color-bg-dark: #06232c;
-  --color-danger: #eb0052;
-  --color-success: #24a865;
-  --color-accent: #6f41d7;
-  --color-rating: #ffa639;
-  --color-accent-dark: #1a0533;
-  --elevation-04: 0 12px 12px rgba(0,0,0,0.05);
-  --elevation-02: 0 2px 4px rgba(0,0,0,0.12);
-  --elevation-sheet: 0 -4px 20px rgba(0,0,0,0.12);
-}
+      --color-bg-dark: #06232c;
+      --color-danger: #eb0052;
+      --color-success: #24a865;
+      --elevation-sheet: 0 -4px 20px rgba(0,0,0,0.4);
+    }
     html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
     body {
       font-family: var(--font);
@@ -44,6 +46,21 @@
       justify-content: center;
       color: var(--color-text-main);
     }
+    /* F1 Miami app theme: wireframe in F1 Miami style (Fever sections hidden) */
+    body.theme-f1-miami { background: var(--f1-bg); }
+    body.theme-f1-miami .phone { background: var(--f1-bg); color: var(--f1-text); }
+    body.theme-f1-miami .hero,
+    body.theme-f1-miami .home-sections,
+    body.theme-f1-miami .footer { display: none !important; }
+    body.theme-f1-miami .navbar {
+      background: var(--f1-bg);
+      border-bottom: 1px solid var(--f1-border);
+    }
+    body.theme-f1-miami .navbar .logo-link img { filter: brightness(0) invert(1); }
+    body.theme-f1-miami .nav-icons svg,
+    body.theme-f1-miami .nav-icon-btn svg { color: var(--f1-text); }
+    body.theme-f1-miami .desktop-nav-center,
+    body.theme-f1-miami .desktop-nav-right { display: none; }
     .phone {
       width: 393px;
       max-width: 100vw;
@@ -178,13 +195,45 @@
     .burger-menu-content {
       padding: 16px 16px 24px;
     }
-    .burger-menu-content h2 {
+    .burger-menu-content h2,
+    .burger-menu-content .burger-menu-title {
       font-size: 16px;
       line-height: 24px;
       font-weight: 600;
       color: var(--color-text-main);
       margin-bottom: 16px;
     }
+    .burger-app-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .burger-app-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      text-decoration: none;
+      color: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .burger-app-item:last-child { border-bottom: none; }
+    .burger-app-item svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .burger-app-item span { color: var(--color-text-main); }
+    body.theme-f1-miami .burger-menu-panel {
+      background: var(--f1-bg);
+      border-left: 1px solid var(--f1-border);
+    }
+    body.theme-f1-miami .burger-location-lang { border-color: var(--f1-border); background: var(--f1-bg-card); }
+    body.theme-f1-miami .burger-location span,
+    body.theme-f1-miami .burger-lang { color: var(--f1-text); }
+    body.theme-f1-miami .burger-menu-content .burger-menu-title { color: var(--f1-text); }
+    body.theme-f1-miami .burger-app-item { border-color: var(--f1-border); }
+    body.theme-f1-miami .burger-app-item span { color: var(--f1-text); }
+    body.theme-f1-miami .burger-app-item svg { color: var(--f1-teal); }
+    body.theme-f1-miami .burger-app-item:hover { background: var(--f1-bg-elevated); }
     .burger-category-list {
       list-style: none;
       display: flex;
@@ -808,22 +857,22 @@
       display: flex;
       padding: 0 16px;
       gap: 0;
-      border-bottom: 1px solid var(--color-border);
-      background: #fff;
+      border-bottom: 1px solid var(--f1-border);
+      background: var(--f1-bg);
     }
     .f1-day-tabs .tab {
       flex: 1;
       padding: 12px 8px;
       border: none;
       background: none;
-      font-family: var(--font);
+      font-family: var(--f1-font);
       font-size: 14px;
       font-weight: 500;
-      color: var(--color-text-subtle);
+      color: var(--f1-text-muted);
       cursor: pointer;
       position: relative;
     }
-    .f1-day-tabs .tab.active { font-weight: 600; color: var(--color-text-main); }
+    .f1-day-tabs .tab.active { font-weight: 600; color: var(--f1-teal); }
     .f1-day-tabs .tab.active::after {
       content: '';
       position: absolute;
@@ -831,12 +880,15 @@
       right: 0;
       bottom: 0;
       height: 2px;
-      background: var(--color-primary);
+      background: var(--f1-teal);
     }
     .f1-live-block {
       padding: 16px;
-      background: #fff;
-      border-bottom: 1px solid var(--color-border);
+      background: var(--f1-bg-card);
+      border: 1px solid var(--f1-border);
+      border-radius: 12px;
+      margin: 16px;
+      margin-bottom: 0;
     }
     .f1-session-row {
       display: flex;
@@ -848,35 +900,36 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: 64px;
-      background: var(--color-primary-weak);
-      color: var(--color-primary);
+      background: var(--f1-teal-dim);
+      color: var(--f1-teal);
       font-size: 12px;
       font-weight: 600;
     }
-    .f1-session-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-success); }
+    .f1-session-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--f1-teal); }
     .f1-timer {
       display: inline-flex;
       align-items: center;
       gap: 4px;
       font-size: 14px;
       font-weight: 600;
-      color: var(--color-text-main);
+      color: var(--f1-text);
     }
+    .f1-timer svg { color: var(--f1-teal); }
     .f1-safety-banner {
       display: flex;
       align-items: flex-start;
       gap: 10px;
       padding: 12px;
-      background: #fff8e6;
-      border: 1px solid #e6d9a8;
+      background: rgba(255, 193, 7, 0.12);
+      border: 1px solid rgba(255, 193, 7, 0.4);
       border-radius: 8px;
       margin-bottom: 12px;
     }
-    .f1-safety-banner svg { width: 24px; height: 24px; flex-shrink: 0; color: var(--color-text-warning, #9f5800); }
-    .f1-safety-banner strong { font-size: 12px; color: var(--color-text-main); }
-    .f1-safety-banner span { font-size: 12px; color: var(--color-text-subtle); display: block; margin-top: 2px; }
+    .f1-safety-banner svg { width: 24px; height: 24px; flex-shrink: 0; color: #ffc107; }
+    .f1-safety-banner strong { font-size: 12px; color: var(--f1-text); }
+    .f1-safety-banner span { font-size: 12px; color: var(--f1-text-muted); display: block; margin-top: 2px; }
     .f1-weather-map {
       display: flex;
       gap: 12px;
@@ -886,26 +939,27 @@
       flex: 0 0 140px;
       padding: 8px 0;
     }
-    .f1-weather .temp { font-size: 24px; font-weight: 600; color: var(--color-text-main); }
-    .f1-weather .meta { font-size: 12px; color: var(--color-text-subtle); margin-top: 4px; }
+    .f1-weather .temp { font-size: 24px; font-weight: 600; color: var(--f1-text); }
+    .f1-weather .meta { font-size: 12px; color: var(--f1-text-muted); margin-top: 4px; }
     .f1-map-thumb {
       flex: 1;
       min-height: 80px;
-      background: var(--color-bg-neutral);
+      background: var(--f1-bg-elevated);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-text-subtle);
+      color: var(--f1-text-muted);
       font-size: 12px;
     }
     .f1-map-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px; color: var(--color-text-subtle);
+      font-size: 12px;
+      color: var(--f1-text-muted);
       padding: 8px 0;
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--f1-border);
       margin-bottom: 12px;
     }
     .f1-sponsor-placeholder {
@@ -913,27 +967,27 @@
       align-items: center;
       gap: 12px;
       padding: 12px 16px;
-      background: var(--color-bg-neutral);
+      background: var(--f1-bg-elevated);
       border-radius: 8px;
       margin-bottom: 16px;
     }
-    .f1-sponsor-placeholder .icon { width: 32px; height: 32px; background: var(--color-border); border-radius: 4px; }
-    .f1-sponsor-placeholder .title { font-size: 14px; font-weight: 600; color: var(--color-text-subtle); }
+    .f1-sponsor-placeholder .icon { width: 32px; height: 32px; background: var(--f1-border); border-radius: 4px; }
+    .f1-sponsor-placeholder .title { font-size: 14px; font-weight: 600; color: var(--f1-text-muted); }
     .f1-standings table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .f1-standings th { text-align: left; padding: 6px 8px 6px 0; font-weight: 600; color: var(--color-text-subtle); }
+    .f1-standings th { text-align: left; padding: 6px 8px 6px 0; font-weight: 600; color: var(--f1-text-muted); }
     .f1-standings th:nth-child(1) { width: 36px; }
     .f1-standings th:nth-child(3) { width: 56px; }
     .f1-standings th:nth-child(4) { text-align: right; }
-    .f1-standings td { padding: 8px 8px 8px 0; vertical-align: middle; border-top: 1px solid var(--color-border); }
+    .f1-standings td { padding: 8px 8px 8px 0; vertical-align: middle; border-top: 1px solid var(--f1-border); color: var(--f1-text); }
     .f1-standings td:nth-child(4) { text-align: right; font-variant-numeric: tabular-nums; }
     .f1-driver { display: flex; align-items: center; gap: 8px; }
     .f1-driver .flag { font-size: 16px; }
-    .f1-driver .name { font-weight: 600; color: var(--color-text-main); }
-    .f1-driver .team { font-size: 11px; color: var(--color-text-subtle); }
+    .f1-driver .name { font-weight: 600; color: var(--f1-text); }
+    .f1-driver .team { font-size: 11px; color: var(--f1-text-muted); }
     .f1-view-full { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 0; }
-    .f1-view-full a { font-size: 14px; font-weight: 600; color: var(--color-primary); text-decoration: none; }
+    .f1-view-full a { font-size: 14px; font-weight: 600; color: var(--f1-teal); text-decoration: none; }
     .f1-quick-actions { padding: 0 16px 24px; }
-    .f1-quick-actions h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--color-text-main); }
+    .f1-quick-actions h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--f1-text); }
     .f1-quick-actions-grid { display: flex; gap: 12px; }
     .f1-quick-card {
       flex: 1;
@@ -943,18 +997,18 @@
       align-items: center;
       justify-content: center;
       padding: 16px 8px;
-      background: #fff;
-      border: 1px solid var(--color-border);
+      background: var(--f1-bg-card);
+      border: 1px solid var(--f1-border);
       border-radius: 12px;
       text-decoration: none;
-      color: var(--color-text-main);
-      transition: border-color 0.15s, box-shadow 0.15s;
+      color: var(--f1-text);
+      transition: border-color 0.15s, background 0.15s;
     }
-    .f1-quick-card:hover { border-color: var(--color-primary); }
-    .f1-quick-card svg { width: 32px; height: 32px; color: var(--color-primary); margin-bottom: 8px; }
+    .f1-quick-card:hover { border-color: var(--f1-teal); background: var(--f1-bg-elevated); }
+    .f1-quick-card svg { width: 32px; height: 32px; color: var(--f1-teal); margin-bottom: 8px; }
     .f1-quick-card span { font-size: 13px; font-weight: 600; text-align: center; line-height: 1.3; }
     .f1-parallel { padding: 0 16px 24px; }
-    .f1-parallel h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--color-text-main); }
+    .f1-parallel h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--f1-text); }
     .f1-chips {
       display: flex;
       gap: 8px;
@@ -971,46 +1025,48 @@
       gap: 6px;
       padding: 8px 12px;
       border-radius: 64px;
-      border: 1px solid var(--color-border);
-      background: #fff;
+      border: 1px solid var(--f1-border);
+      background: var(--f1-bg-card);
       font-size: 13px;
       font-weight: 500;
-      color: var(--color-text-main);
+      color: var(--f1-text);
       cursor: pointer;
+      font-family: var(--f1-font);
     }
-    .f1-chip.active { border-color: var(--color-primary); background: var(--color-primary-weak); color: var(--color-primary); }
+    .f1-chip.active { border-color: var(--f1-teal); background: var(--f1-teal-dim); color: var(--f1-teal); }
     .f1-event-list { margin-top: 16px; }
     .f1-event-item {
       display: block;
       padding: 16px 0;
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--f1-border);
       text-decoration: none;
       color: inherit;
     }
-    .f1-event-item .category { font-size: 12px; font-weight: 500; color: var(--color-primary); margin-bottom: 4px; }
-    .f1-event-item .title { font-size: 16px; font-weight: 600; color: var(--color-text-main); }
-    .f1-event-item .desc { font-size: 13px; color: var(--color-text-subtle); margin-top: 4px; }
-    .f1-event-item .location { font-size: 12px; color: var(--color-text-subtle); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+    .f1-event-item .category { font-size: 12px; font-weight: 500; color: var(--f1-teal); margin-bottom: 4px; }
+    .f1-event-item .title { font-size: 16px; font-weight: 600; color: var(--f1-text); }
+    .f1-event-item .desc { font-size: 13px; color: var(--f1-text-muted); margin-top: 4px; }
+    .f1-event-item .location { font-size: 12px; color: var(--f1-text-muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+    .f1-event-item .location svg { color: var(--f1-teal); }
     .f1-sponsor-banner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 12px 16px;
-      background: var(--color-bg-neutral);
-      border-top: 1px solid var(--color-border);
+      background: var(--f1-bg-card);
+      border-top: 1px solid var(--f1-border);
     }
     .f1-sponsor-banner .left { display: flex; align-items: center; gap: 12px; }
-    .f1-sponsor-banner .icon { width: 32px; height: 32px; background: var(--color-border); border-radius: 4px; }
-    .f1-sponsor-banner .title { font-size: 14px; font-weight: 600; color: var(--color-text-subtle); }
-    .f1-sponsor-banner .close { width: 24px; height: 24px; border: none; background: none; cursor: pointer; color: var(--color-text-subtle); padding: 0; display: flex; align-items: center; justify-content: center; }
+    .f1-sponsor-banner .icon { width: 32px; height: 32px; background: var(--f1-border); border-radius: 4px; }
+    .f1-sponsor-banner .title { font-size: 14px; font-weight: 600; color: var(--f1-text-muted); }
+    .f1-sponsor-banner .close { width: 24px; height: 24px; border: none; background: none; cursor: pointer; color: var(--f1-text-muted); padding: 0; display: flex; align-items: center; justify-content: center; }
     .f1-bottom-nav {
       display: flex;
       justify-content: space-around;
       align-items: center;
       padding: 8px 0 12px;
       padding-bottom: max(12px, env(safe-area-inset-bottom));
-      background: #fff;
-      border-top: 1px solid var(--color-border);
+      background: var(--f1-bg);
+      border-top: 1px solid var(--f1-border);
       position: fixed;
       bottom: 0;
       left: 50%;
@@ -1027,10 +1083,10 @@
       gap: 4px;
       font-size: 11px;
       font-weight: 500;
-      color: var(--color-text-subtle);
+      color: var(--f1-text-muted);
       text-decoration: none;
     }
-    .f1-bottom-nav a.active { color: var(--color-primary); }
+    .f1-bottom-nav a.active { color: var(--f1-teal); }
     .f1-bottom-nav a svg { width: 24px; height: 24px; }
 
     /* Focus-visible */
@@ -1046,7 +1102,7 @@
   <link rel="stylesheet" href="css/desktop.css">
 <script>if(localStorage.getItem("fever_logged_in")==="true")document.documentElement.classList.add("u-in")</script>
 </head>
-<body>
+<body class="theme-f1-miami">
   <div class="phone has-f1-nav">
 
     <!-- Navbar -->
@@ -1094,17 +1150,15 @@
         </div>
       </div>
       <div class="burger-menu-content">
-        <h2>Categories</h2>
-        <ul class="burger-category-list">
-          <li><a href="category.html?cat=fever-originals" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/9f8fa516-1ab3-11f0-acbb-460e748c3556.jpg" alt="Fever Originals"><span>Fever Originals</span></a></li>
-          <li><a href="category.html?cat=food-drinks" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/66fdd5ea-53dd-11ee-a3d8-bef8ce2e6ee8.jpg" alt="Food and Drinks"><span>Food &amp; Drinks</span></a></li>
-          <li><a href="category.html?cat=activities-games" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/3bd77184-9533-11f0-9570-f251230785be.jpg" alt="Activities and Games"><span>Activities &amp; Games</span></a></li>
-          <li><a href="category.html?cat=candlelight" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/66cd0d5a-1945-11f0-b4e1-16541c266220.jpg" alt="Candlelight Concerts"><span>Candlelight Concerts</span></a></li>
-          <li><a href="category.html?cat=culture-arts" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/ce0edbfc-52a1-11f0-87c2-fe0e7cbe00f7.jpg" alt="Culture, Arts and Fashion"><span>Culture, Arts &amp; Fashion</span></a></li>
-          <li><a href="category.html?cat=shows" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/e652f392-407b-11ec-9b6b-9a748ce8397a" alt="Live Shows"><span>Live Shows &amp; Performances</span></a></li>
-          <li><a href="category.html?cat=brunches" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/ee89a0dc-1aa8-11f0-87b3-ba3a3d0c034e.jpg" alt="Brunches"><span>Brunches</span></a></li>
-          <li><a href="category.html?cat=family" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/7342ce00-8bae-11ef-9248-e6d116a45f62.png" alt="Family"><span>Family</span></a></li>
-          <li><a href="category.html?cat=sports" class="burger-category-item"><img class="burger-category-thumb" src="https://applications-media.feverup.com/image/upload/f_auto,w_100,h_80,c_fill/fever2/plan/photo/aa6979be-8fdc-11f0-86ac-628e8f210c54.jpg" alt="Sports"><span>Sports &amp; Outdoors</span></a></li>
+        <h2 class="burger-menu-title">Menu</h2>
+        <ul class="burger-app-list">
+          <li><a href="index.html" class="burger-app-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Home</span></a></li>
+          <li><a href="f1-map.html" class="burger-app-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Map</span></a></li>
+          <li><a href="f1-programme.html" class="burger-app-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Programme</span></a></li>
+          <li><a href="plan.html?plan=f1-grand-prix" class="burger-app-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 3H6a2 2 0 00-2 2v14a2 2 0 002 2h4M14 2v4M10 2v4"/></svg><span>Mi entrada</span></a></li>
+          <li><a href="f1-merch.html" class="burger-app-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg><span>Merch &amp; Food</span></a></li>
+          <li><a href="f1-more.html" class="burger-app-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>Help</span></a></li>
+          <li><a href="profile.html" class="burger-app-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Profile</span></a></li>
         </ul>
       </div>
     </div>
@@ -1768,9 +1822,9 @@
     <nav class="f1-bottom-nav" aria-label="F1 App navigation">
       <a href="index.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>Home</a>
       <a href="f1-map.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
-      <a href="category.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Programme</a>
-      <a href="search.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 3H6a2 2 0 00-2 2v14a2 2 0 002 2h4"/></svg>Merch &amp; Food</a>
-      <a href="help-center.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>More</a>
+      <a href="f1-programme.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Programme</a>
+      <a href="f1-merch.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 3H6a2 2 0 00-2 2v14a2 2 0 002 2h4"/></svg>Merch &amp; Food</a>
+      <a href="f1-more.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>More</a>
     </nav>
 
     <div class="city-sheet-overlay" id="city-sheet-overlay" aria-hidden="true">

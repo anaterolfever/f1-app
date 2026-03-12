@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merch &amp; Food — F1 Madrid | F1 Map</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --f1-bg: #0d0d0d;
+      --f1-bg-card: #1a1a1a;
+      --f1-teal: #00C8C7;
+      --f1-text: #ffffff;
+      --f1-text-muted: rgba(255, 255, 255, 0.7);
+      --f1-border: rgba(255, 255, 255, 0.12);
+      --f1-font: 'Montserrat', -apple-system, sans-serif;
+    }
+    body { font-family: var(--f1-font); background: var(--f1-bg); color: var(--f1-text); display: flex; justify-content: center; min-height: 100vh; }
+    .phone { width: 393px; max-width: 100vw; padding-bottom: 64px; }
+    .navbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; background: var(--f1-bg); border-bottom: 1px solid var(--f1-border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .navbar .logo-link { text-decoration: none; }
+    .navbar .logo-link img { height: 38px; filter: brightness(0) invert(1); }
+    .navbar .nav-title { font-size: 18px; font-weight: 600; }
+    .nav-icon-btn { all: unset; cursor: pointer; color: var(--f1-text); }
+    .nav-icon-btn svg { width: 24px; height: 24px; }
+    .merch-content { padding: 16px; }
+    .merch-section { margin-bottom: 24px; }
+    .merch-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--f1-teal); }
+    .merch-card {
+      display: block; padding: 16px; background: var(--f1-bg-card); border-radius: 12px;
+      border: 1px solid var(--f1-border); margin-bottom: 12px; text-decoration: none; color: inherit;
+    }
+    .merch-card .title { font-size: 15px; font-weight: 600; }
+    .merch-card .meta { font-size: 13px; color: var(--f1-text-muted); margin-top: 4px; }
+    .f1-bottom-nav {
+      display: flex; justify-content: space-around; align-items: center;
+      padding: 8px 0 max(12px, env(safe-area-inset-bottom));
+      background: var(--f1-bg); border-top: 1px solid var(--f1-border);
+      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 393px; max-width: 100vw; z-index: 50;
+    }
+    .f1-bottom-nav a {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 500; color: var(--f1-text-muted); text-decoration: none;
+    }
+    .f1-bottom-nav a.active { color: var(--f1-teal); }
+    .f1-bottom-nav a svg { width: 24px; height: 24px; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <nav class="navbar">
+      <a href="index.html" class="logo-link"><img src="img/fever-logo.svg" alt="F1 Map"></a>
+      <span class="nav-title">Merch &amp; Food</span>
+      <a href="profile.html" class="nav-icon-btn" aria-label="Profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+    </nav>
+    <div class="merch-content">
+      <div class="merch-section">
+        <h3>Official merchandise</h3>
+        <a href="search.html" class="merch-card">
+          <div class="title">F1 Store</div>
+          <div class="meta">Official merchandise &amp; collectibles</div>
+        </a>
+        <a href="search.html" class="merch-card">
+          <div class="title">Team merchandise</div>
+          <div class="meta">Team caps, apparel &amp; accessories</div>
+        </a>
+      </div>
+      <div class="merch-section">
+        <h3>Food &amp; drinks</h3>
+        <a href="f1-map.html" class="merch-card">
+          <div class="title">Circuit food zones</div>
+          <div class="meta">View on map</div>
+        </a>
+      </div>
+    </div>
+    <nav class="f1-bottom-nav" aria-label="F1 App navigation">
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>Home</a>
+      <a href="f1-map.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="f1-programme.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Programme</a>
+      <a href="f1-merch.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 3H6a2 2 0 00-2 2v14a2 2 0 002 2h4"/></svg>Merch &amp; Food</a>
+      <a href="f1-more.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>More</a>
+    </nav>
+  </div>
+</body>
+</html>
